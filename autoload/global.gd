@@ -355,3 +355,10 @@ func saveImagesFromData():
 func pushUpdate(text):
 	if is_instance_valid(updatePusherNode):
 		updatePusherNode.pushUpdate(text)
+		
+func loadAvatar(path):
+	print("Main Edit Mode: " + str(main.editMode))
+	print("loading at: " + path)
+	print("Consider doing it here: " + OS.get_environment("USERPROFILE"))
+	main._on_load_dialog_file_selected(path)
+	

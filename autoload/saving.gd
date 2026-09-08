@@ -87,6 +87,7 @@ func read_save(path):
 	else:
 		var file = FileAccess.open(path, FileAccess.READ)
 		if not file:
+			print("Not File")
 			return null
 		var newData = JSON.parse_string(file.get_as_text())
 		file.close()

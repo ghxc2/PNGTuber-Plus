@@ -299,8 +299,9 @@ func _on_load_button_pressed():
 
 #LOAD AVATAR
 func _on_load_dialog_file_selected(path):
+	print("Loading Internally: " + path)
 	var data = Saving.read_save(path)
-	
+	print(data == null)
 	if data == null:
 		return
 	
@@ -632,3 +633,11 @@ func bgInputSprite(node, keys_pressed):
 		return
 	
 	spriteVisToggles.emit(keyStrings)
+
+
+func _on_path_box_text_submitted(new_text: String) -> void:
+	pass # Replace with function body.
+	
+static func loadAvatar():
+	
+	return
