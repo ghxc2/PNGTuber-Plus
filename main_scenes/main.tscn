@@ -34,6 +34,7 @@
 [ext_resource type="Texture2D" uid="uid://dj1ffgeyacc8g" path="res://ui_scenes/settings/info.png" id="27_og5v1"]
 [ext_resource type="PackedScene" uid="uid://cgto2hfjsb1oe" path="res://ui_scenes/pushUpdates/push_updates.tscn" id="30_q43vl"]
 [ext_resource type="Script" uid="uid://c27he06m06cb0" path="res://main_scenes/PathBox.gd" id="34_wkprp"]
+[ext_resource type="Script" uid="uid://mp4b360fy1q4" path="res://main_scenes/AvatarAutomation/GiftAutomation.gd" id="35_u50q2"]
 
 [sub_resource type="Image" id="Image_7luwo"]
 data = {
@@ -14737,11 +14738,16 @@ modulate = Color(0, 0, 0, 0.478431)
 z_index = -4096
 
 [node name="PathBox" type="LineEdit" parent="." unique_id=1940931499]
+visible = false
 offset_left = 43.0
 offset_top = 546.0
 offset_right = 686.5
 offset_bottom = 577.0
 script = ExtResource("34_wkprp")
+
+[node name="Gift" type="Node" parent="." unique_id=781541684]
+script = ExtResource("35_u50q2")
+metadata/_custom_type_script = "uid://btbm8eph7tyt7"
 
 [connection signal="pressed" from="ControlPanel/MicButtong/Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="ControlPanel/SettingsButton/settingsButtons" to="." method="_on_settings_buttons_pressed"]

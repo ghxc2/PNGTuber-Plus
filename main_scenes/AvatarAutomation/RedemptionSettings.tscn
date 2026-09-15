@@ -1,0 +1,74 @@
+[gd_scene format=3 uid="uid://ohvy3nudnemx"]
+
+[ext_resource type="Script" uid="uid://dig80suhlp8da" path="res://main_scenes/AvatarAutomation/Control.gd" id="1_y381j"]
+
+[node name="RedemptionSettings" type="Window" unique_id=1773858267]
+oversampling_override = 1.0
+position = Vector2i(0, 36)
+size = Vector2i(600, 600)
+
+[node name="Control" type="Control" parent="." unique_id=1711108763]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_y381j")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control" unique_id=127647416]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 560.0
+offset_bottom = 1553.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Control/VBoxContainer" unique_id=1231436212]
+layout_mode = 2
+size_flags_vertical = 4
+bbcode_enabled = true
+text = "[center][font_size=30][b][color=#C084FC]✦ CHANNEL POINTS ✦[/color][/b][/font_size]
+[font_size=20][b][color=#FFFFFF]REDEMPTIONS[/color][/b][/font_size]
+[font_size=13][color=#888888]Connect your rewards to files & effects[/color][/font_size][/center]"
+fit_content = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/VBoxContainer" unique_id=1911478331]
+visible = false
+layout_mode = 2
+
+[node name="RedemptionName" type="LineEdit" parent="Control/VBoxContainer/HBoxContainer" unique_id=233643206]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+placeholder_text = "Redemption Name"
+
+[node name="FilePath" type="LineEdit" parent="Control/VBoxContainer/HBoxContainer" unique_id=118358276]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+placeholder_text = "File Path"
+
+[node name="Browse" type="Button" parent="Control/VBoxContainer/HBoxContainer" unique_id=615425535]
+layout_mode = 2
+text = "Browse"
+
+[node name="Delete" type="Button" parent="Control/VBoxContainer/HBoxContainer" unique_id=1350616360]
+layout_mode = 2
+text = "Delete"
+
+[node name="GUIButtons" type="HBoxContainer" parent="Control/VBoxContainer" unique_id=1655659029]
+layout_mode = 2
+
+[node name="New" type="Button" parent="Control/VBoxContainer/GUIButtons" unique_id=264199997]
+layout_mode = 2
+text = "New"
+
+[node name="Save" type="Button" parent="Control/VBoxContainer/GUIButtons" unique_id=684281301]
+layout_mode = 2
+text = "Save"
+
+[node name="FileDialog" type="FileDialog" parent="Control" unique_id=539240891]
+title = "Open a File"
+file_mode = 0
+access = 2
+
+[connection signal="size_changed" from="." to="Control" method="_on_window_size_changed"]
