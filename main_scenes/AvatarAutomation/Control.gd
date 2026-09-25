@@ -127,6 +127,13 @@ func create_redemption_row(reward_name: String, path: String) -> void:
 			_on_delete_pressed(row)
 	)
 	
+	# Load button
+	var load_button: Button = row.get_node("Load")
+	load_button.pressed.connect(
+		func():
+			Global.loadAvatar(row.get_node("FilePath").text)
+	)
+	
 	$VBoxContainer.add_child(row)
 	$VBoxContainer.move_child(row, $VBoxContainer.get_child_count() - 2)
 

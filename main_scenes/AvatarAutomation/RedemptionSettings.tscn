@@ -53,7 +53,7 @@ visible = false
 layout_mode = 2
 
 [node name="RedemptionName" type="LineEdit" parent="Control/VBoxContainer/HBoxContainer" unique_id=233643206]
-custom_minimum_size = Vector2(300, 0)
+custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 placeholder_text = "Redemption Name"
 
@@ -69,6 +69,10 @@ text = "Browse"
 [node name="Delete" type="Button" parent="Control/VBoxContainer/HBoxContainer" unique_id=1350616360]
 layout_mode = 2
 text = "Delete"
+
+[node name="Load" type="Button" parent="Control/VBoxContainer/HBoxContainer" unique_id=10228125]
+layout_mode = 2
+text = "Load"
 
 [node name="GUIButtons" type="HBoxContainer" parent="Control/VBoxContainer" unique_id=1655659029]
 layout_mode = 2
