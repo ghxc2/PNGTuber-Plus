@@ -1,8 +1,8 @@
 extends Gift
 
-const REDEMPTIONS_PATH := "user://redemptions.json"
-
-var redemptions: Dictionary = {}
+const REDEMPTIONS_PATH = Global.REDEMPTIONS_PATH
+var redemptions = Global.redemptions
+@onready var queue: Node2D = $"../CostumeQueue"
 
 func _ready() -> void:
 	load_redemptions()
@@ -39,17 +39,17 @@ func on_event(type: String, data: Dictionary) -> void:
 			var reward_name: String = data["reward"]["title"]
 			var user: String = data["user_name"]
 
-			print(user, " redeemed ", reward_name)
+			#print(user, " redeemed ", reward_name)
 			
-			var file_path: String = redemptions.get(reward_name, "")
+			#var file_path: String = redemptions.get(reward_name, "")
+			#
+			#print(file_path)
+			#
+			#if file_path.is_empty():
+				#print("error")
+				#return
 			
-			print(file_path)
-			
-			if file_path.is_empty():
-				print("error")
-				return
-			
-			Global.loadAvatar(file_path)
+			queue.enqueue(reward_name)
 
 func load_redemptions() -> void:
 	if not FileAccess.file_exists(REDEMPTIONS_PATH):
@@ -66,5 +66,5 @@ func load_redemptions() -> void:
 	file.close()
 
 	if data is Dictionary:
-		redemptions = data
+		redemptions.merge(data)
 		print("Loaded redemptions: ", redemptions)

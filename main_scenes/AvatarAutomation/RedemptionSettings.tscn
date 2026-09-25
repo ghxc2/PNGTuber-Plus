@@ -33,6 +33,21 @@ text = "[center][font_size=30][b][color=#C084FC]✦ CHANNEL POINTS ✦[/color][/
 [font_size=13][color=#888888]Connect your rewards to files & effects[/color][/font_size][/center]"
 fit_content = true
 
+[node name="TimerSettings" type="HBoxContainer" parent="Control/VBoxContainer" unique_id=152535050]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Control/VBoxContainer/TimerSettings" unique_id=1824194912]
+layout_mode = 2
+text = "Seconds On Redeem Rewards: "
+
+[node name="TimerInput" type="LineEdit" parent="Control/VBoxContainer/TimerSettings" unique_id=427621376]
+layout_mode = 2
+text = "300"
+
+[node name="SaveTimer" type="Button" parent="Control/VBoxContainer/TimerSettings" unique_id=1148512504]
+layout_mode = 2
+text = "Save"
+
 [node name="HBoxContainer" type="HBoxContainer" parent="Control/VBoxContainer" unique_id=1911478331]
 visible = false
 layout_mode = 2

@@ -50,6 +50,11 @@ var updatePusherNode = null
 
 var rand = RandomNumberGenerator.new()
 
+const REDEMPTIONS_PATH := "user://redemptions.json"
+var redemptions: Dictionary = {}
+var current_avatar = ""
+var redemption_timer = 300
+
 func _ready():
 	spectrum = AudioServer.get_bus_effect_instance(1, 1)
 	
@@ -357,8 +362,6 @@ func pushUpdate(text):
 		updatePusherNode.pushUpdate(text)
 		
 func loadAvatar(path):
-	print("Main Edit Mode: " + str(main.editMode))
-	print("loading at: " + path)
-	print("Consider doing it here: " + OS.get_environment("USERPROFILE"))
+	current_avatar = path
 	main._on_load_dialog_file_selected(path)
 	

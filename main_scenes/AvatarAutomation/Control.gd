@@ -1,9 +1,10 @@
 extends Control
 
 const SAVE_PATH := "user://redemptions.json"
+const SETTINGS_PATH := "user://settings.json"
 
 var current_row: HBoxContainer
-var redemptions: Dictionary = {}
+var redemptions = Global.redemptions
 
 @onready var redemption_name: LineEdit = $VBoxContainer/HBoxContainer/RedemptionName
 @onready var file_path: LineEdit = $VBoxContainer/HBoxContainer/FilePath
@@ -21,8 +22,10 @@ func _ready() -> void:
 	file_dialog.file_selected.connect(_on_file_selected)
 	new_button.pressed.connect(_on_new_pressed)
 	
+	
 	load_redemptions()
 	populate_redemptions()
+	
 
 
 func _on_browse_pressed() -> void:
@@ -45,6 +48,10 @@ func _on_save_pressed() -> void:
 		# Ignore the hidden template
 		if row == $VBoxContainer/HBoxContainer:
 			continue
+		if row == $VBoxContainer/GUIButtons:
+			continue
+		if row == $VBoxContainer/TimerSettings:
+			continue
 
 		var name_field: LineEdit = row.get_node_or_null("RedemptionName")
 		var path_field: LineEdit = row.get_node_or_null("FilePath")
@@ -60,7 +67,6 @@ func _on_save_pressed() -> void:
 			continue
 
 		redemptions[name] = path
-
 	save_redemptions()
 
 func _on_new_pressed() -> void:
@@ -72,10 +78,10 @@ func save_redemptions() -> void:
 	if file == null:
 		print("Failed to open save file.")
 		return
-
+	print(str(redemptions))
 	file.store_string(JSON.stringify(redemptions))
 	file.close()
-
+	
 	print("Redemptions saved.")
 
 
@@ -96,7 +102,7 @@ func load_redemptions() -> void:
 	var data = JSON.parse_string(json_string)
 
 	if data is Dictionary:
-		redemptions = data
+		redemptions.merge(data)
 
 	print("Redemptions loaded: ", redemptions)
 	

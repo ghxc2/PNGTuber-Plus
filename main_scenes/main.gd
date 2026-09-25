@@ -361,7 +361,7 @@ func _on_load_dialog_file_selected(path):
 		origin.add_child(sprite)
 		sprite.position = str_to_var(data[item]["pos"])
 	
-	changeCostume(1)
+	changeCostume(costume)
 	Saving.settings["lastAvatar"] = path
 	Global.spriteList.updateData()
 	

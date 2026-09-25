@@ -35,6 +35,7 @@
 [ext_resource type="PackedScene" uid="uid://cgto2hfjsb1oe" path="res://ui_scenes/pushUpdates/push_updates.tscn" id="30_q43vl"]
 [ext_resource type="Script" uid="uid://c27he06m06cb0" path="res://main_scenes/PathBox.gd" id="34_wkprp"]
 [ext_resource type="Script" uid="uid://mp4b360fy1q4" path="res://main_scenes/AvatarAutomation/GiftAutomation.gd" id="35_u50q2"]
+[ext_resource type="Script" uid="uid://cu0s2g5bjcjks" path="res://main_scenes/AvatarAutomation/costume_queue.gd" id="36_5ok1y"]
 
 [sub_resource type="Image" id="Image_7luwo"]
 data = {
@@ -14749,6 +14750,16 @@ script = ExtResource("34_wkprp")
 script = ExtResource("35_u50q2")
 metadata/_custom_type_script = "uid://btbm8eph7tyt7"
 
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="." unique_id=1183285983]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="CostumeQueue" type="Node2D" parent="." unique_id=844132366]
+script = ExtResource("36_5ok1y")
+
+[node name="CostumeTimer" type="Timer" parent="CostumeQueue" unique_id=30009177]
+wait_time = 300.0
+
 [connection signal="pressed" from="ControlPanel/MicButtong/Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="ControlPanel/SettingsButton/settingsButtons" to="." method="_on_settings_buttons_pressed"]
 [connection signal="pressed" from="ControlPanel/Edit/Button" to="." method="swapMode"]
@@ -14770,3 +14781,4 @@ metadata/_custom_type_script = "uid://btbm8eph7tyt7"
 [connection signal="bg_key_pressed" from="BackgroundInputCapture" to="." method="bgInputSprite"]
 [connection signal="bg_key_pressed" from="BackgroundInputCapture" to="." method="_on_background_input_capture_bg_key_pressed"]
 [connection signal="text_submitted" from="PathBox" to="PathBox" method="_on_text_submitted"]
+[connection signal="timeout" from="CostumeQueue/CostumeTimer" to="CostumeQueue" method="next_costume"]

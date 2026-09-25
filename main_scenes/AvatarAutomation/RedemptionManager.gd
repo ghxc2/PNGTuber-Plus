@@ -1,6 +1,6 @@
 extends Node
 
-var redemptions: Dictionary = {}
+var redemptions = Global.redemptions
 
 const SAVE_PATH := "user://redemptions.json"
 
@@ -31,6 +31,7 @@ func load() -> void:
 	file.close()
 
 	var data = JSON.parse_string(json_string)
-
+	
+	redemptions.clear()
 	if data is Dictionary:
-		redemptions = data
+		redemptions.merge(data)

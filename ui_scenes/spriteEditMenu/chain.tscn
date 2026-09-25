@@ -1,7 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://6ah4i0nx1tu6"]
+[gd_scene format=3 uid="uid://6ah4i0nx1tu6"]
 
-[ext_resource type="Script" path="res://ui_scenes/spriteEditMenu/chain.gd" id="1_66udn"]
-[ext_resource type="Shader" path="res://ui_scenes/spriteEditMenu/chain.gdshader" id="2_58fpx"]
+[ext_resource type="Script" uid="uid://dcetkvj8xbxgh" path="res://ui_scenes/spriteEditMenu/chain.gd" id="1_66udn"]
+[ext_resource type="Shader" uid="uid://dm4j1u10wb10h" path="res://ui_scenes/spriteEditMenu/chain.gdshader" id="2_58fpx"]
 [ext_resource type="Texture2D" uid="uid://7antbeiop3my" path="res://ui_scenes/spriteEditMenu/buh.png" id="3_rsife"]
 [ext_resource type="Texture2D" uid="uid://cc5kaiuc8ikpx" path="res://ui_scenes/spriteEditMenu/plug.png" id="4_gywbm"]
 
@@ -14,21 +14,21 @@ gradient = SubResource("Gradient_bmcbo")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_12eg4"]
 shader = ExtResource("2_58fpx")
-shader_parameter/speed = null
-shader_parameter/palette_speed = 1.0
+shader_parameter/speed = 0.0
 shader_parameter/palette = SubResource("GradientTexture1D_vomwt")
+shader_parameter/palette_speed = 1.0
 
-[node name="Chain" type="Node2D"]
+[node name="Chain" type="Node2D" unique_id=1252402376]
 script = ExtResource("1_66udn")
 
-[node name="Line2D" type="Line2D" parent="."]
+[node name="Line2D" type="Line2D" parent="." unique_id=2019157966]
 texture_repeat = 2
 material = SubResource("ShaderMaterial_12eg4")
 points = PackedVector2Array(0, 0, 0, 139)
 texture = ExtResource("3_rsife")
 texture_mode = 2
 
-[node name="Plug" type="Sprite2D" parent="."]
+[node name="Plug" type="Sprite2D" parent="." unique_id=1403655286]
 position = Vector2(0, 140)
 rotation = 1.5708
 texture = ExtResource("4_gywbm")
