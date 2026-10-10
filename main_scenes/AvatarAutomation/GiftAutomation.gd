@@ -12,7 +12,7 @@ func _ready() -> void:
 	scopes = ["channel:read:redemptions"]
 	
 	# Load Twitch authentication information
-	var authfile := FileAccess.open("res://auth.txt", FileAccess.READ)
+	var authfile := FileAccess.open("user://auth.txt", FileAccess.READ)
 
 	client_id = authfile.get_line()
 	client_secret = authfile.get_line()

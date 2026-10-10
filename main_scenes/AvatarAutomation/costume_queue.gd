@@ -1,7 +1,7 @@
 extends Node2D
 
 var queue = []
-@onready var timer: Timer = $CostumeTimer
+@onready var timer: Node = $CostumeTimerRealTime
 
 func enqueue(costume):
 	queue.push_back(costume)
