@@ -35,3 +35,10 @@ func get_costume_path(costume):
 	var file: String = Global.redemptions.get(costume, "")
 	return file
 	
+func print_queue():
+	print("items in queue:")
+	for item in queue:
+		print(item)
+	return
+	
+	

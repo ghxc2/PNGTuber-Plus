@@ -5,6 +5,24 @@ var redemptions = Global.redemptions
 @onready var queue: Node2D = $"../CostumeQueue"
 
 func _ready() -> void:
+	events_connected.connect(func():
+		print("[GIFT] EventSub connected")
+	)
+	events_disconnected.connect(func():
+		print("[GIFT] WARNING: EventSub disconnected")
+	)
+	events_unavailable.connect(func():
+		print("[GIFT] ERROR: EventSub unavailable")
+	)
+	events_reconnect.connect(func():
+		print("[GIFT] EventSub reconnect requested")
+	)
+	events_revoked.connect(func(event_name, reason):
+		print("[GIFT] Subscription revoked: ", event_name, " | ", reason)
+	)
+	
+	
+	
 	load_redemptions()
 	event.connect(on_event)
 
@@ -38,9 +56,12 @@ func on_event(type: String, data: Dictionary) -> void:
 		"channel.channel_points_custom_reward_redemption.add":
 			var reward_name: String = data["reward"]["title"]
 			var user: String = data["user_name"]
-
+			
+			
 			#print(user, " redeemed ", reward_name)
 			
+			if not Global.redemptions.has(reward_name):
+				return
 			#var file_path: String = redemptions.get(reward_name, "")
 			#
 			#print(file_path)
@@ -50,7 +71,8 @@ func on_event(type: String, data: Dictionary) -> void:
 				#return
 			
 			queue.enqueue(reward_name)
-
+			#queue.print_queue()
+			
 func load_redemptions() -> void:
 	if not FileAccess.file_exists(REDEMPTIONS_PATH):
 		print("No redemption configuration found.")
@@ -68,3 +90,4 @@ func load_redemptions() -> void:
 	if data is Dictionary:
 		redemptions.merge(data)
 		print("Loaded redemptions: ", redemptions)
+	

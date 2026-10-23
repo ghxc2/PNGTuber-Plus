@@ -25,6 +25,7 @@
 [ext_resource type="PackedScene" uid="uid://6ah4i0nx1tu6" path="res://ui_scenes/spriteEditMenu/chain.tscn" id="19_mt1os"]
 [ext_resource type="Texture2D" uid="uid://bs2c34vipucwm" path="res://ui_scenes/button sprites/duplicate.png" id="20_wpwei"]
 [ext_resource type="Texture2D" uid="uid://hunniqiw3ss4" path="res://ui_scenes/spriteEditMenu/failed.png" id="21_6nw1o"]
+[ext_resource type="FontFile" uid="uid://bj7gm7e6634it" path="res://font/g.ttf" id="23_wb6xq"]
 [ext_resource type="Texture2D" uid="uid://c43lmtk2g6dgg" path="res://ui_scenes/spriteEditMenu/arrows.png" id="24_joqmn"]
 [ext_resource type="PackedScene" uid="uid://kj528cw4xqwd" path="res://ui_scenes/settings/settings_menu.tscn" id="25_a76ao"]
 [ext_resource type="Script" uid="uid://b761j8jsfuftt" path="res://main_scenes/MicInputSelect.gd" id="26_17y2u"]
@@ -14179,6 +14180,10 @@ font = ExtResource("18_aq7ao")
 font_color = Color(0, 0, 0, 0.384314)
 shadow_size = 4
 
+[sub_resource type="LabelSettings" id="LabelSettings_bhunq"]
+font = ExtResource("23_wb6xq")
+font_size = 26
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f4sd5"]
 size = Vector2(48, 48)
 
@@ -14396,6 +14401,14 @@ offset_right = 282.0
 offset_bottom = 74.0
 text = "v1.4.5"
 label_settings = SubResource("LabelSettings_xvf50")
+
+[node name="Label3" type="Label" parent="ControlPanel/VersionLabels" unique_id=539693049]
+offset_left = -715.0
+offset_top = -142.0
+offset_right = -630.0
+offset_bottom = -118.0
+text = "Gh Fork"
+label_settings = SubResource("LabelSettings_bhunq")
 
 [node name="EditControls" type="Node2D" parent="." unique_id=1409735161]
 visible = false
@@ -14733,7 +14746,7 @@ position = Vector2(-28, -28)
 
 [node name="PushUpdates" parent="." unique_id=1148284409 instance=ExtResource("30_q43vl")]
 z_index = 4090
-position = Vector2(0, 720)
+position = Vector2(1, 713)
 
 [node name="shadowSprite" type="Sprite2D" parent="." unique_id=1722773009]
 modulate = Color(0, 0, 0, 0.478431)

@@ -369,6 +369,63 @@ func _on_load_dialog_file_selected(path):
 	
 	onWindowSizeChange()
 	
+	# Wait for sprite initialization and parent attachment
+	await get_tree().create_timer(0.2).timeout
+
+	verify_avatar(data, path)
+	
+# VERIFY AVATAR LOADED CORRECTLY
+func verify_avatar(data: Dictionary, path) -> void:
+	print("----- AVATAR VERIFICATION START -----")
+
+	var errors := 0
+
+	for item in data:
+		var expected_id = data[item]["identification"]
+		var expected_parent_id = data[item]["parentId"]
+		var nodes = get_tree().get_nodes_in_group(str(expected_id))
+
+		# Check that the sprite exists
+		if nodes.is_empty():
+			print("[MISSING] Sprite ID: ", expected_id)
+			errors += 1
+			continue
+
+		var sprite_node = nodes[0]
+
+		# Check that the sprite has loaded its texture
+		if sprite_node.sprite.texture == null:
+			print("[NO TEXTURE] Sprite ID: ", expected_id,
+				" | Path: ", data[item]["path"])
+			errors += 1
+
+		# Check that child sprites are attached to the expected parent
+		if expected_parent_id != null:
+			var parent_nodes = get_tree().get_nodes_in_group(
+				str(expected_parent_id)
+			)
+
+			if parent_nodes.is_empty():
+				print("[MISSING PARENT] Sprite ID: ", expected_id,
+					" | Expected parent: ", expected_parent_id)
+				errors += 1
+				continue
+
+			var expected_parent_sprite = parent_nodes[0].sprite
+
+			if sprite_node.get_parent() != expected_parent_sprite:
+				print("[WRONG PARENT] Sprite ID: ", expected_id,
+					" | Expected parent: ", expected_parent_id)
+				errors += 1
+
+	if errors == 0:
+		print("Avatar verification passed! All sprites look correct.")
+	else:
+		print("Avatar verification found ", errors, " issue(s).")
+		print("ReAttempting...")
+		_on_load_dialog_file_selected(path)
+		
+	print("----- AVATAR VERIFICATION END -----")
 #SAVE AVATAR
 func _on_save_dialog_file_selected(path):
 	var data = {}
