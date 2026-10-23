@@ -5,3 +5,6 @@ THIS GH VERSION, INTENDING TO ADD NEW FEATURES
 MADE FOR TWITCH STREAMER ghxc2
 
 twitch.tv/ghxc2
+
+Includes Outfit Swapping Support
+Uses GIFT addon to allow automation based on redemptions
